@@ -33,6 +33,7 @@ char				*ft_strcpy(char *dst, char *src);
 char				*ft_strdup(char *s1);
 size_t				ft_strlcat(char *dst, char *src, size_t size);
 size_t	ft_strlen(const char *str);
+size_t				ft_is_space(char c);
 char				*ft_strncat(char *s1, char *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, char *src, size_t n);
@@ -74,7 +75,6 @@ void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char const *str, int fd);
 void ft_putendl_fd(char const *str, int fd);
 void ft_putnbr_fd(int nb, int fd);
-int	ft_isspace(int c);
 
 t_list *ft_lstnew(void const *content, size_t c_size);
 void ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
