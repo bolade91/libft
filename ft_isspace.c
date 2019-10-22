@@ -10,17 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_isspace() function tests for any spacing character :
-** ' ' - \t - \n - \v - \f - \r
-*/
-
 #include "libft.h"
 
-int		ft_isspace(int c)
+size_t	ft_is_space(char c)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-		|| c == '\r')
-		return (1);
-	return (0);
+	return (c == '\t' || c == 32 || c == '\n');
 }
