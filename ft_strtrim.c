@@ -16,48 +16,31 @@
 */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int count_spaces_st(char const *s)
+char		*ft_strtrim(char const *s)
 {
-	int		i;
-	int		spaces;
-
-	i = 0;
-	spaces = 0;
-	while (ft_isspace(s[i]))
-	{
-		i++;
-		spaces++;
-	}
-	return (spaces);
-}
-
-static int		count_spaces_nd(char const *s)
-{
+	char	*fresh;
+	int		start_fresh;
+	int		end_fresh;
 	int		j;
-	int		spaces;
 
-	j = 1;
-	spaces = 0;
-	while (ft_isspace(s[ft_strlen(s) - j]))
-	{
-		j++;
-		spaces++;
-	}
-	return (spaces);
-}
-
-char			*ft_strtrim(char const *s)
-{
-	char	*str;
-	int		spaces;
-
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	spaces = count_spaces_st(s) + count_spaces_nd(s);
-	str = ft_strnew(ft_strlen(s) - spaces);
-	str = ft_strsub(s, count_spaces_st(s), ft_strlen(s) - count_spaces_nd(s));
-	str[ft_strlen(s) - spaces] = '\0';
-	return (str);
+	if (*s == '\0')
+		return (ft_strdup(""));
+	start_fresh = 0;
+	end_fresh = ft_strlen(s);
+	while (s[start_fresh] && ft_is_space(s[start_fresh]) == 1)
+		start_fresh++;
+	while (end_fresh > 0 && ft_is_space(s[end_fresh - 1]) == 1)
+		end_fresh--;
+	if (end_fresh <= start_fresh)
+		return (ft_strdup(""));
+	if (!(fresh = (char*)malloc(sizeof(char) * (end_fresh - start_fresh) + 1)))
+		return (NULL);
+	j = 0;
+	while (start_fresh < end_fresh)
+		fresh[j++] = s[start_fresh++];
+	fresh[j] = '\0';
+	return (fresh);
 }
