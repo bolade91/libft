@@ -10,30 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strsub() function returns a part of s, starting at start and with
-** a length len.
-*/
-
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
+	char	*st;
 	size_t	i;
-	char	*buffer;
 
-	i = 0;
-	if (len == 0)
-		return (ft_strinit((char *)s));
-	if (s == NULL || !(buffer = ft_strnew(len)) || len > ft_strlen(s))
+	if (!s)
 		return (NULL);
-	while (i < len && ((char *)s)[start])
+	st = ft_strnew(len);
+	if (!st)
+		return (NULL);
+	i = -1;
+	while (++i < len)
 	{
-		buffer[i] = ((char *)s)[start];
-		i++;
+		st[i] = s[start];
 		start++;
 	}
-	buffer[i] = '\0';
-	return (buffer);
+	st[i] = '\0';
+	return (st);
 }
