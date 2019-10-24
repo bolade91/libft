@@ -15,7 +15,6 @@
 ** list->content or NULL if there is no content.
 */
 
-#include <stdlib.h>
 #include "libft.h"
 
 t_list		*ft_lstnew(void const *content, size_t c_size)
