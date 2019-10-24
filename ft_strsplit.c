@@ -16,7 +16,6 @@
 */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int		count_w(char const *s, char *c)
 {
